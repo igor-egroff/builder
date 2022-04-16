@@ -62,6 +62,10 @@ public class Person {
         this.city = city;
     }
 
+    public void happyBirthday(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return name + surname + age + city;

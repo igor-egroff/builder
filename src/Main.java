@@ -94,6 +94,7 @@ public class Main {
             Person finalSon = son;
 
             //Смена адреса человка в списке
+
             persons.merge(new Person(mom.name, mom.surname),
                     persons.get(new Person(mom.name, mom.surname)),
                     (a, b) -> Arrays.asList(finalMom, finalSon));
@@ -101,12 +102,7 @@ public class Main {
             //   Если возраст человека известен, то с момента создания объекта он может быть изменён только
             //   увеличением на единицу
             if (mom.hasAge()) {
-                mom = new PersonBuilder()
-                        .setName(mom.name)
-                        .setSurname(mom.surname)
-                        .setAge(mom.age++)
-                        .setAddress(mom.city)
-                        .build();
+                persons.get(new Person(mom.name, mom.surname)).get(1).happyBirthday(mom.age++);
             }
 
         }
