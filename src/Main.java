@@ -6,7 +6,8 @@ public class Main {
     private static Map<Person, List<Person>> persons = new HashMap<>();
 
     public static void main(String[] args) {
-
+        mom = new PersonBuilder()
+                .build();
 //1 тест-------------------------------------------------------------------
         mom = new PersonBuilder()
                 .setName("Анна")
@@ -18,8 +19,6 @@ public class Main {
                 .setName("Антошка")
                 .build();
         fillingListPerson(mom, son);
-        son = mom.newChildBuilder()
-                .build();
 
 //2 тест-------------------------------------------------------------------
         mom = new PersonBuilder()
@@ -33,8 +32,6 @@ public class Main {
                 .build();
 
         fillingListPerson(mom, son);
-        son = mom.newChildBuilder()
-                .build();
 
 //3 тест-------------------------------------------------------------------
         mom = new PersonBuilder()
@@ -44,8 +41,7 @@ public class Main {
                 .setAddress("Питер")
                 .build();
         fillingListPerson(mom, son);
-        son = mom.newChildBuilder()
-                .build();
+
 //4 тест-----------------------------------------------------------------
         mom = new PersonBuilder()
                 .setName("Майя")
@@ -65,23 +61,6 @@ public class Main {
             System.out.println("-   " + entry.getValue().get(0).city + ",   " + entry.getValue().get(0).name + ",   "
                     + entry.getValue().get(0).surname + ",   " + entry.getValue().get(0).age + ",   "
                     + entry.getValue().get(1).name);
-        }
-
-        // Проверка незаполненности обязаттельных полей
-
-        try {
-            if (mom.name == null | mom.surname == null) {
-                throw new InternalError("Не все поля заполнены");
-            }
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        }
-        //Проверка, что возраст положительное число
-        try {
-            if (mom.age < 0)
-                throw new InternalError("возраст не может быть отрицательным или равен нулю");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         }
 
     }
@@ -110,7 +89,9 @@ public class Main {
                 mom.city, son.name);
 
         System.out.println();
-
+        PersonBuilder.i = 0;
+        son = mom.newChildBuilder()
+                .build();
 
     }
 

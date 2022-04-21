@@ -13,7 +13,6 @@ public class Person {
 
     }
 
-
     public Person(String name, String surname, int age, String city) {
         this.name = name;
         this.surname = surname;
@@ -92,9 +91,7 @@ public class Person {
         return Objects.hash(name, surname);
     }
 
-
     public PersonBuilder newChildBuilder() {
         return new PersonBuilder();
     }
-
 }
