@@ -9,24 +9,55 @@ public class Main {
         mom = new PersonBuilder()
                 .build();
 //1 тест-------------------------------------------------------------------
-        mom = new PersonBuilder()
-                .setName("Анна")
-                .setSurname("Петрова")
-                .setAge(32)
-                .setAddress("Сидней")
-                .build();
+
+        try {
+            try {
+                mom = new PersonBuilder()
+                        .setName("Анна")
+                        .setSurname("Петрова")
+                        .setAge(32)
+                        .setAddress("Сидней")
+                        .build();
+                if (mom.getAge() < 0)
+                    throw new InternalError("возраст не может быть отрицательным или равен нулю");
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            if (mom.getName() == null | mom.getSurname() == null) {
+                throw new InternalError("Не все поля заполнены");
+
+            }
+
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
         son = mom.newChildBuilder()
                 .setName("Антошка")
                 .build();
         fillingListPerson(mom, son);
 
 //2 тест-------------------------------------------------------------------
-        mom = new PersonBuilder()
-                .setName("Анна")
-                .setSurname("Петрова")
-                .setAge(32)
-                .setAddress("Орел")
-                .build();
+        try {
+            try {
+                mom = new PersonBuilder()
+                        .setName("Анна")
+                        .setSurname("Петрова")
+                        .setAge(32)
+                        .setAddress("Орел")
+                        .build();
+                if (mom.getAge() < 0)
+                    throw new InternalError("возраст не может быть отрицательным или равен нулю");
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            if (mom.getName() == null | mom.getSurname() == null) {
+                throw new InternalError("Не все поля заполнены");
+
+            }
+
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
         son = mom.newChildBuilder()
                 .setName("Петр")
                 .build();
@@ -34,24 +65,54 @@ public class Main {
         fillingListPerson(mom, son);
 
 //3 тест-------------------------------------------------------------------
-        mom = new PersonBuilder()
-                .setName("Ольга")
-                .setSurname("Иванова")
-                .setAge(31)
-                .setAddress("Питер")
-                .build();
+        try {
+            try {
+                mom = new PersonBuilder()
+                        .setName("Ольга")
+                        .setSurname("Иванова")
+                        .setAge(31)
+                        .setAddress("Питер")
+                        .build();
+                if (mom.getAge() < 0)
+                    throw new InternalError("возраст не может быть отрицательным или равен нулю");
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            if (mom.getName() == null | mom.getSurname() == null) {
+                throw new InternalError("Не все поля заполнены");
+
+            }
+
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
         fillingListPerson(mom, son);
 
 //4 тест-----------------------------------------------------------------
-        mom = new PersonBuilder()
-                .setName("Майя")
-                .setSurname("Семенова")
-                //.setAge(31)
-                .setAddress("Новосибирск")
-                .build();
-        son = mom.newChildBuilder()
-                .setName("Вася")
-                .build();
+        try {
+            try {
+                mom = new PersonBuilder()
+                        .setName("Майя")
+                        .setSurname("Семенова")
+                        //.setAge(31)
+                        .setAddress("Новосибирск")
+                        .build();
+                son = mom.newChildBuilder()
+                        .setName("Вася")
+                        .build();
+                if (mom.getAge() < 0)
+                    throw new InternalError("возраст не может быть отрицательным");
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+            if (mom.getName() == null | mom.getSurname() == null) {
+                throw new InternalError("Не все поля заполнены");
+
+            }
+
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
         fillingListPerson(mom, son);
 
         // Печать списка людей
